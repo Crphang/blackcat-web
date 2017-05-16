@@ -12,7 +12,7 @@ const PATHS = {
 };
 
 const common = {
-  entry: PATHS.app,
+  entry: ['babel-polyfill', PATHS.app],
   output: {
     path: PATHS.build,
     filename: 'bundle.js',
@@ -25,6 +25,11 @@ const common = {
       {
         test: /\.jsx?$/,
         loaders: ['babel-loader'],
+        include: PATHS.app,
+      },
+      {
+        test: /\.scss$/,
+        loaders: ['style-loader', 'css-loader', 'sass-loader'],
         include: PATHS.app,
       },
     ],

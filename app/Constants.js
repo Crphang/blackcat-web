@@ -1,3 +1,4 @@
 export default {
-  HOST: 'http://localhost:8000/api',
+  HOST: 'http://localhost:3000/api',
+  STATIC: 'http://localhost',
 };

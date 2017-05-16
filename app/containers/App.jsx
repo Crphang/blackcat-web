@@ -5,21 +5,21 @@ import PropTypes from 'prop-types';
 import { getEvents } from '../api/EventApi';
 import EventRow from '../components/EventRow';
 
+import '../styles/App.scss';
+import Navbar from '../components/Navbar';
+
 class App extends React.Component {
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.user !== undefined) {
-      nextProps.getEvents();
-    }
+  componentDidMount() {
+    this.props.getEvents();
   }
 
   render() {
-    // console.log(this.props.events);
     return (
-      <div>
-        <div>Your App</div>
+      <div className="wrapper">
+        <Navbar { ...this.props }/>
         { this.props.events &&
-          this.props.events.map(event => <EventRow key={event.id} event={event} />) }
+          this.props.events.map(event => <EventRow key={event.id} event={event} user={this.props.user}/>) }
       </div>
     );
   }

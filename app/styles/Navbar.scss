@@ -1,0 +1,38 @@
+.bar {
+	width: 320px;
+	background-color: #8560A9;
+	padding-left: 16px;
+	padding-right: 14px;
+	height: 40px;
+
+	.searchLogo {
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		margin-top: 3px;
+		margin-right: 113px;
+	}
+
+	.homeLogo {
+		display: inline-block;
+		width: 24px;
+		height: 24px;
+		margin-top: 3px;
+		margin-right: 113px;
+	}
+
+	.mainLogo {
+		display: inline-block;
+		width: 20.9px;
+		height: 24px;
+		margin-top: 8px;
+		margin-right: 111.1px;
+	}
+
+	.meLogo {
+		display: inline-block;
+		width: 24px;
+		height: 24px;
+		margin-top: 5px;
+	}
+}
