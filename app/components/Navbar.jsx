@@ -11,7 +11,7 @@ export default function Navbar(props) {
       <div className="bar">
         <img className="searchLogo" src={Constants.STATIC + '/assets/search.svg'} />
         <img className="mainLogo" src={Constants.STATIC + '/assets/logo-cat.svg'} />
-        <Link to="/me"><img className="meLogo" src={Constants.STATIC + '/assets/people-outline.svg'} /></Link>
+        <Link to="/me"><img className="meLogo" src={Constants.STATIC + '/assets/orange-dp.jpg'} /></Link>
       </div>
     );
   }
@@ -20,7 +20,7 @@ export default function Navbar(props) {
     <div className="bar">
       <Link to="/"><img className="homeLogo" src={Constants.STATIC + '/assets/home.svg'} /></Link>
       <img className="mainLogo" src={Constants.STATIC + '/assets/logo-cat.svg'} />
-      <Link to="/me"><img className="meLogo" src={Constants.STATIC + '/assets/people-outline.svg'} /></Link>
+      <Link to="/me"><img className="meLogo" src={Constants.STATIC + '/assets/orange-dp.jpg'} /></Link>
     </div>
   );
 }

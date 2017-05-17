@@ -1,0 +1,44 @@
+/* === Source Sans Pro - regular */
+@font-face {
+	font-family: 'Source Sans Pro';
+	font-style: normal;
+	font-weight: 400;
+	src: url("./font/SourceSansPro-Regular.eot");
+	src: local("Source Sans Pro"),
+		local("SourceSansPro-Regular"),
+		url("./font/SourceSansPro-Regular.eot") format("embedded-opentype"),
+		url("./font/SourceSansPro-Regular.woff2") format("woff2"),
+		url("./font/SourceSansPro-Regular.woff") format("woff"),
+		url("./font/SourceSansPro-Regular.ttf") format("truetype"),
+		url("./font/SourceSansPro-Regular.svg") format("svg");
+}
+
+/* === Source Sans Pro - 600 */
+@font-face {
+	font-family: 'Source Sans Pro';
+	font-style: normal;
+	font-weight: 600;
+	src: url("./font/SourceSansPro-SemiBold.eot");
+	src: local("Source Sans Pro Semibold"),
+		local("SourceSansPro-Semibold"),
+		url("./font/SourceSansPro-SemiBold.eot") format("embedded-opentype"),
+		url("./font/SourceSansPro-SemiBold.woff2") format("woff2"),
+		url("./font/SourceSansPro-SemiBold.woff") format("woff"),
+		url("./font/SourceSansPro-SemiBold.ttf") format("truetype"),
+		url("./font/SourceSansPro-SemiBold.svg") format("svg");
+}
+
+/* === Source Sans Pro - 700 */
+@font-face {
+	font-family: 'Source Sans Pro';
+	font-style: normal;
+	font-weight: 700;
+	src: url("./font/SourceSansPro-Bold.eot");
+	src: local("Source Sans Pro Bold"),
+		local("SourceSansPro-Bold"),
+		url("./font/SourceSansPro-Bold.eot") format("embedded-opentype"),
+		url("./font/SourceSansPro-Bold.woff2") format("woff2"),
+		url("./font/SourceSansPro-Bold.woff") format("woff"),
+		url("./font/SourceSansPro-Bold.ttf") format("truetype"),
+		url("./font/SourceSansPro-Bold.svg") format("svg");
+}

@@ -19,8 +19,12 @@ export const login = (username, password) => {
     .then((response) => {
       response.json()
       .then((user) => {
-        dispatch(userLogin(user));
-        dispatch(push('/'));
+        if ('error' in user) {
+          console.log('HANDLE ERROR');
+        } else {
+          dispatch(userLogin(user));
+          dispatch(push('/'));
+        }
       });
     });
   };

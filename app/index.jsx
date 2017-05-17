@@ -10,6 +10,7 @@ import App from './containers/App';
 import Login from './containers/Login';
 import EnsureLoggedInContainer from './containers/EnsureLoggedInContainer';
 import UserDetail from './containers/UserDetail';
+import EventDetail from './containers/EventDetail';
 
 async function init() {
   // Ensure that rehydration happened
@@ -23,6 +24,7 @@ async function init() {
         <Route path="/login" component={Login} />
         <Route component={EnsureLoggedInContainer}>
           <Route path="/" component={App} />
+          <Route path="/event/:id" component={EventDetail} />
           <Route path="/me" component={UserDetail} />
         </Route>
       </Router>

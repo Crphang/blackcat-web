@@ -17,9 +17,9 @@ class App extends React.Component {
   render() {
     return (
       <div className="wrapper">
-        <Navbar { ...this.props }/>
+        <Navbar {...this.props} />
         { this.props.events &&
-          this.props.events.map(event => <EventRow key={event.id} event={event} user={this.props.user}/>) }
+         Object.values(this.props.events).map(event => <EventRow key={event.id} event={event} user={this.props.user}/>) }
       </div>
     );
   }
@@ -43,7 +43,7 @@ const mapDispatchToProps = (dispatch) => {
 App.propTypes = {
   getEvents: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
-  events: PropTypes.array.isRequired,
+  events: PropTypes.object.isRequired,
 };
 
 

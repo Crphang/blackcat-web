@@ -1,0 +1,75 @@
+.loginWrapper {
+	width: 320px;
+
+	.backgroundLogin {
+		position: absolute;
+		z-index: -2;
+		opacity: 0.95;
+		width: 320px;
+		height: 480px;
+	}
+
+	.backgroundColor {
+		text-align: center;
+		background-color: rgba(133, 96, 169, 0.7);
+		height: 480px;
+
+		.loginSlogan {
+			padding-top: 70px;
+			color: #D5EF7F;
+			font-family: "SourceSansPro-Semibold";
+			font-size: 16px;
+			margin-bottom: 16px;
+		}
+
+		.brandName {
+			font-family: "SourceSansPro-Bold";
+			color: #D5EF7F;
+			font-size: 24px;
+			margin-bottom: 37px;
+		}
+
+		.loginLogo {
+			width: 64px;
+			height: 64px;
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			margin-bottom: 118px;
+		}
+
+		.loginField {
+			width: 240px;
+			height: 40px;
+			color: #453257;
+			font-size: 16px;
+			padding-left: 8px;
+			border-radius: 20px;
+			border: 1px;
+			border-color: #D3C1E5;
+			margin-bottom: 8px;
+			margin-top: 8px;
+			background-color: rgba(255, 255, 255, 0.15);
+		}
+
+		.loginField::placeholder {
+			color: #AC8EC9;
+		}
+
+		.loginField:focus {
+			background-color: rgba(255, 255, 255, 0.3);
+			outline: none;
+		}
+
+	}
+
+	.signIn {
+		width: 320px;
+		height: 64px;
+		background-color: #D5EF7F;
+		color: #453257;
+		font-size: 16px;
+		text-align: center;
+		border: none;
+	}
+}

@@ -1,7 +1,7 @@
 import 'whatwg-fetch';
 
 import CONSTANTS from '../Constants';
-import { getEventsAction } from '../actions/EventActions';
+import { getEventsAction, getEventDetailAction } from '../actions/EventActions';
 
 export const getEvents = () => {
   return (dispatch, getState) => {
@@ -25,7 +25,7 @@ export const getEvents = () => {
 export const getEvent = (eventId) => {
   return (dispatch, getState) => {
     const accessToken = getState().user.access_token;
-    fetch(CONSTANTS.HOST + `/event/get_event?event_id=${eventId}`, {
+    fetch(CONSTANTS.HOST + `/event/get?event_id=${eventId}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ export const getEvent = (eventId) => {
     .then((response) => {
       response.json()
       .then((body) => {
-        // dispatch(SOME_ACTION);
+        dispatch(getEventDetailAction(body));
       });
     });
   };
