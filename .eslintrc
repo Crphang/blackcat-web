@@ -4,5 +4,6 @@
 		"prefer-template": "off",
 		"no-undef": "off",
 		"arrow-body-style": "off",
+		"react/prop-types": "off",
 	}
 }

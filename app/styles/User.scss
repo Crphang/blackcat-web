@@ -1,0 +1,107 @@
+.userDetailWrapper {
+	width: 320px;
+	padding-top: 36px;
+
+	.userLogo {
+		margin-left: auto;
+		margin-right: auto;
+		width: 72px;
+		height: 72px;
+		border: 2px solid #D3C1E5;
+		border-radius: 36px;
+		display: block;
+		margin-bottom: 24px;
+	}
+
+	.userName {
+		font-size: 24px;
+		font-family: 'SourceSansPro-Regular';
+		color: #67616D;
+		text-align: center;
+		margin-bottom: 8px;
+	}
+
+	.email {
+		text-align: center;
+		margin-bottom: 24px;
+
+		.emailLogo {
+			display: inline-block;
+			width: 16px;
+			height: 13px;
+			margin-right: 5px;
+		}
+
+		.userEmail {
+			display: inline-block;
+			font-family: "SourceSansPro-Regular";
+			font-size: 14px;
+			color: #8560A9;
+
+		}		
+	}
+
+	.horizontalLine {
+		height: 1px;
+		width: 100%;
+		background-color: #E8E8E8;
+	}
+
+	.tabs {
+		margin-top: 14px;
+		margin-bottom: 14px;
+		padding-left: 8%;
+		padding-right: 8%;
+
+		.verticalLine {
+			display:inline-block;
+			width: 1px;
+			height: 8px;
+			background-color: #E8E8E8;
+		}
+
+		.tabLogo {
+			width: 20px;
+			height: 20px;
+			margin-right: 6px;
+			display: inline;
+		}
+
+		.tabTextFilled {
+			font-size: 12px;
+			font-family: 'SourceSansPro-Semibold';
+			color: #AECB4F;
+			display: inline;
+		}
+
+		.tabTextEmpty {
+			font-size: 12px;
+			font-family: 'SourceSansPro-Semibold';
+			color: #8C8C8C;
+			display: inline;			
+		}
+
+		.tabLikes {
+			display: inline-block;
+			width: 28%;
+			margin-right: 3%;
+			cursor: pointer;
+		}
+
+		.tabGoing {
+			cursor: pointer;
+			margin-left: 4%;
+			margin-right: 4%;
+			width: 28%;
+			display: inline-block;
+		}
+
+		.tabPast {
+			margin-left: 3%;
+			width: 28%;
+			display: inline-block;
+		}
+	}
+	
+
+}

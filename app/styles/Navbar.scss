@@ -1,11 +1,10 @@
 .bar {
 	width: 320px;
 	background-color: #8560A9;
-	padding-left: 16px;
-	padding-right: 14px;
 	height: 40px;
 
 	.searchLogo {
+		padding-left: 3%;
 		display: inline-block;
 		width: 20px;
 		height: 20px;
@@ -14,11 +13,12 @@
 	}
 
 	.homeLogo {
+		padding-left: 2%;
 		display: inline-block;
 		width: 24px;
 		height: 24px;
 		margin-top: 3px;
-		margin-right: 38%;
+		margin-right: 37%;
 	}
 
 	.mainLogo {
@@ -26,7 +26,7 @@
 		width: 20.9px;
 		height: 24px;
 		margin-top: 8px;
-		margin-right: 38%;
+		margin-right: 37%;
 	}
 
 	.meLogo {

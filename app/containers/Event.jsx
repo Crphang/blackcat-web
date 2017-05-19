@@ -3,8 +3,13 @@ import { connect } from 'react-redux';
 
 import { getEvent } from '../api/EventApi';
 import Navbar from '../components/Navbar';
+import EventDetail from '../components/EventDetail';
+import ParticipantsDetail from '../components/ParticipantsDetail';
+import CommentsDetail from '../components/CommentsDetail';
 
-class EventDetail extends React.Component {
+import '../styles/Event.scss';
+
+class Event extends React.Component {
 
   componentDidMount() {
     this.props.getEvent(this.props.routeParams.id);
@@ -18,7 +23,10 @@ class EventDetail extends React.Component {
       return (
         <div>
           <Navbar {...this.props} />
-          <div>{event.id}</div>
+          <div className="eventWrapper">
+            {event.id}
+            
+          </div>
         </div>
       );
     }
@@ -43,4 +51,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(EventDetail);
+export default connect(mapStateToProps, mapDispatchToProps)(Event);
