@@ -52,7 +52,7 @@ class User extends React.Component {
           </div>
           <div className="horizontalLine" />
           <div className="tabs">
-            <div onClick={() => this.handleSelectType('Likes')} className="tabLikes">
+            <div onClick={() => this.handleSelectType('Likes')} className="tabLeft">
               {this.state.selected === 'Likes' &&
                 <div>
                   <img className="tabLogo" src={Constants.STATIC + '/assets/like.svg'} />
@@ -60,7 +60,7 @@ class User extends React.Component {
                 </div>
               }
 
-              {this.state.selected !== 'Likes' && 
+              {this.state.selected !== 'Likes' &&
                 <div>
                   <img className="tabLogo" src={Constants.STATIC + '/assets/like-outline.svg'} />
                   <div className="tabTextEmpty">{Object.keys(this.props.user.liked_events).length} Likes</div>
@@ -68,14 +68,14 @@ class User extends React.Component {
               }
             </div>
             <div className="verticalLine" />
-            <div onClick={() => this.handleSelectType('Going')} className="tabGoing">
-              {this.state.selected === 'Going' && 
+            <div onClick={() => this.handleSelectType('Going')} className="tabMiddleShort">
+              {this.state.selected === 'Going' &&
                 <div>
                   <img className="tabLogo" src={Constants.STATIC + '/assets/check.svg'} />
                   <div className="tabTextFilled">{Object.keys(this.props.user.participating_events).length} Going</div>
                 </div>
               }
-              {this.state.selected !== 'Going' && 
+              {this.state.selected !== 'Going' &&
                 <div>
                   <img className="tabLogo" src={Constants.STATIC + '/assets/check-outline.svg'} />
                   <div className="tabTextEmpty">{Object.keys(this.props.user.participating_events).length} Going</div>
@@ -83,7 +83,7 @@ class User extends React.Component {
               }
             </div>
             <div className="verticalLine" />
-            <div className="tabPast">
+            <div className="tabRight">
               <img className="tabLogo" src={Constants.STATIC + '/assets/past-outline.svg'} />
               <div className="tabTextEmpty">0 Past</div>
             </div>

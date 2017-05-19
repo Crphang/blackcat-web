@@ -1,3 +1,85 @@
+.horizontalLine {
+	height: 1px;
+	width: 100%;
+	background-color: #E8E8E8;
+}
+
+.verticalLine {
+	display:inline-block;
+	width: 1px;
+	height: 8px;
+	background-color: #E8E8E8;
+}
+
+hr {
+	width: 300px;
+	color: #E8E8E8;
+	border: none;
+	height: 1px;
+	background-color: #E8E8E8;
+}
+
+.tabs {
+	margin-top: 14px;
+	margin-bottom: 14px;
+	padding-left: 5%;
+	padding-right: 5%;
+
+	.tabLogo {
+		width: 20px;
+		height: 20px;
+		margin-right: 6px;
+		display: inline;
+		vertical-align: middle;
+	}
+
+	.tabTextFilled {
+		font-size: 12px;
+		font-family: 'Source Sans Pro';
+		font-weight: 600;
+		color: #AECB4F;
+		display: inline;
+	}
+
+	.tabTextEmpty {
+		font-size: 12px;
+		font-family: 'Source Sans Pro';
+		font-weight: 600;
+		color: #8C8C8C;
+		display: inline;			
+	}
+
+	.tabLeft {
+		display: inline-block;
+		width: 26%;
+		margin-right: 2%;
+		cursor: pointer;
+	}
+
+	.tabMiddle {
+		cursor: pointer;
+		margin-left: 4%;
+		margin-right: 3%;
+		width: 31%;
+		display: inline-block;
+	}
+
+	.tabMiddleShort {
+		cursor: pointer;
+		margin-left: 4%;
+		margin-right: 4%;
+		width: 26%;
+		display: inline-block;		
+	}
+
+	.tabRight {
+		cursor: pointer;
+		margin-left: 5%;
+		width: %;
+		display: inline-block;
+	}
+}
+
 .bar {
 	width: 320px;
 	background-color: #8560A9;

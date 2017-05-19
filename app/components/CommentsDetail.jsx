@@ -1,8 +1,13 @@
 import React from 'react';
 
-const CommentsDetail = () => {
+import CommentsTab from './CommentsTab';
+
+const CommentsDetail = ({ event, commentEvent }) => {
   return (
-    <div>CommentsDetail</div>
+    <div>
+      <CommentsTab comments={event.comments} />
+      <div>COMMENT HERE</div>
+    </div>
   );
 };
 

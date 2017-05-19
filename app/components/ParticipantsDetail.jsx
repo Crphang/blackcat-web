@@ -1,8 +1,16 @@
 import React from 'react';
+import CommentsTab from './CommentsTab';
+import FaceRow from './FaceRow';
 
-const ParticipantsDetail = () => {
+const ParticipantsDetail = ({ event }) => {
   return (
-    <div>ParticipantsDetail</div>
+    <div className="participantsDetailWrapper">
+      <FaceRow users={event.participants} type="Going" />
+      <hr />
+      <FaceRow users={event.likes} type="Likes" />
+      <hr />
+      <CommentsTab comments={event.comments} />
+    </div>
   );
 };
 

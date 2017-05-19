@@ -1,4 +1,47 @@
 .eventWrapper {
 	width: 320px;
+	background-color: #FAF9FC;
+	padding-top: 18px;
 	
+	.eventTitle {
+		padding-left: 5%;
+		padding-right: 5%;
+		color: #453257;
+		font-family: 'Source Sans Pro';
+		font-weight: 600;
+		font-size: 20px;
+		margin-bottom: 24px;
+	}
+
+	.eventCreator {
+		padding-left: 5%;
+		padding-right: 5%;
+		margin-bottom: 24px;
+		
+		.creatorImage {
+			display: inline-block;
+			width: 36px;
+			height: 36px;
+			border-radius: 18px;
+			opacity: 0.77;
+			margin-right: 3%;
+		}
+
+		.creatorDetail {
+			display: inline-block;
+
+			.eventCreatorUsername {
+				font-family: 'Source Sans Pro';
+				font-size: 14px;
+				color: #67616D;
+				margin-bottom: 4px;
+			}
+
+			.eventCreateTime {
+				color: #BABABA;
+				font-family: 'Source Sans Pro';
+				font-size: 12px;
+			}
+		}
+	}
 }

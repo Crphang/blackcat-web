@@ -2,6 +2,7 @@ import 'whatwg-fetch';
 
 import CONSTANTS from '../Constants';
 import { getEventsAction, getEventDetailAction } from '../actions/EventActions';
+import { likeEventAction, registerEventAction } from '../actions/UserActions';
 
 export const getEvents = () => {
   return (dispatch, getState) => {
@@ -41,7 +42,7 @@ export const getEvent = (eventId) => {
   };
 };
 
-export const likeEvent = (userId, eventId) => {
+export const likeEvent = (eventId) => {
   return (dispatch, getState) => {
     const accessToken = getState().user.access_token;
     fetch(CONSTANTS.HOST + '/event/like', {
@@ -51,20 +52,23 @@ export const likeEvent = (userId, eventId) => {
         'X-Auth-Token': accessToken,
       },
       body: JSON.stringify({
-        user_id: userId,
         event_id: eventId,
       }),
     })
     .then((response) => {
       response.json()
       .then((body) => {
-        // dispatch(SOME_ACTION);
+        if (body.error === undefined) {
+          dispatch((likeEventAction(body)));
+        }
+
+        console.log(body.error);
       });
     });
   };
 };
 
-export const registerEvent = (userId, eventId) => {
+export const registerEvent = (eventId) => {
   return (dispatch, getState) => {
     const accessToken = getState().user.access_token;
     fetch(CONSTANTS.HOST + '/event/register', {
@@ -74,20 +78,24 @@ export const registerEvent = (userId, eventId) => {
         'X-Auth-Token': accessToken,
       },
       body: JSON.stringify({
-        user_id: userId,
         event_id: eventId,
       }),
     })
     .then((response) => {
       response.json()
       .then((body) => {
-        // dispatch(SOME_ACTION);
+        if (body.error === undefined) {
+          console.log(body);
+          dispatch((registerEventAction(body)));
+        }
+
+        console.log(body.error);
       });
     });
   };
 };
 
-export const commentEvent = (userId, eventId, comment) => {
+export const commentEvent = (eventId, comment) => {
   return (dispatch, getState) => {
     const accessToken = getState().user.access_token;
     fetch(CONSTANTS.HOST + '/event/comment', {
@@ -97,7 +105,6 @@ export const commentEvent = (userId, eventId, comment) => {
         'X-Auth-Token': accessToken,
       },
       body: JSON.stringify({
-        user_id: userId,
         event_id: eventId,
         description: comment,
       }),
@@ -105,7 +112,7 @@ export const commentEvent = (userId, eventId, comment) => {
     .then((response) => {
       response.json()
       .then((body) => {
-        // dispatch(SOME_ACTION);
+        console.log(body);
       });
     });
   };

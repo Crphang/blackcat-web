@@ -1,0 +1,167 @@
+.eventDetailWrapper {
+	padding-left: 5%;
+
+	.eventDescription {
+		color: #67616D;
+		font-family: 'Source Sans Pro';
+		font-size: 14px;
+		margin-top: 12px;
+		padding-right: 5%;
+		margin-bottom: 23.5px;
+	}
+
+	.descriptor {
+		.purpleLine {
+			width: 4px;
+			height: 24px;
+			display: inline-block;
+			border-radius: 2px;
+			background-color: #8560A9;
+			vertical-align: middle;
+		}
+
+		.descriptorTitle {
+			display: inline-block;
+			color: #8560A9;
+			font-size: 16px;
+			font-family: 'Source Sans Pro';
+			font-weight: 600;
+			margin-left: 4px;
+		}
+	}
+
+	.eventPeriod {
+		margin-top: 18.5px;
+
+		.time {
+			margin-top: 21px;
+
+			.timeTop {
+				.timeLogo {
+					display: inline-block;
+					width: 16px;
+					height: 13.5px;
+					margin-right: 5px;
+				}
+
+				.timeDescription {
+					display: inline-block;
+					font-family: 'Source Sans Pro';
+					font-size: 16px;
+					color: #67616D;
+				}
+			}
+
+			.timeBottom {
+				text-align: center;
+				color: #AECB4F;
+				font-size: 32px;
+				font-family: 'Source Sans Pro';
+			}
+
+			.eventStart {
+				padding-top: 6px;
+				padding-bottom:6px;
+				display: inline-block;
+				width: 44%;
+				margin-right: 5%;
+			}
+
+			.eventEnd {
+				padding-top: 6px;
+				padding-bottom:6px;
+				display: inline-block;
+				width: 40%;
+				margin-left: 9%;				
+			}
+
+			.verticalLineLong {
+				display:inline-block;
+				width: 2px;
+				height: 74px;
+				background-color: #E8E8E8;
+			}
+		}
+	}
+
+	.eventLocation {
+		margin-top: 18.5px;
+		margin-bottom: 16px;
+		padding-right: 5%;
+
+		.location {
+			margin-top: 8px;
+			margin-bottom: 8px;
+			color: #67616D;
+			font-size: 14px;
+			font-family: 'Source Sans Pro';
+			font-weight: 600;
+		}
+
+		.googleMaps {
+			width: 100%;
+			height: 88px;
+		}
+	}
+
+
+
+	.eventActions {
+		margin-top: 12px;
+
+		.leftActions {
+			padding-top: 16px;
+			padding-bottom: 16px;
+			width: 60%;
+			height: 24px;
+			background-color: #8560A9;
+			display: inline-block;
+
+			.commentLogo {
+				margin-left: 30%;
+				width: 23.4px;
+				height: 23.4px;
+				margin-right: 5%;
+				cursor: pointer;
+			}
+
+			.likeLogo {
+				margin-left: 5%;
+				width: 23.4px;
+				height: 23.4px;
+				margin-right: 30%;
+				cursor: pointer;
+			}
+		}
+
+		.rightActions {
+			width: 40%;
+			height: 24px;
+			padding-top: 16px;
+			padding-bottom: 16px;
+			background-color: #D5EF7F;
+			display: inline-block;
+			cursor: pointer;
+
+			.joinLogo {
+				width: 23.4px;
+				height: 23.4px;
+				margin-left: 20%;
+				display: inline-block;
+			}
+
+			.join {
+				display: inline-block;
+				margin-left: 2%;
+				font-family: 'Source Sans Pro';
+				font-weight: 600;
+				font-size: 14px;
+				color: #788C36;
+			}
+		}
+	}
+}
+
+.participantsDetailWrapper {
+	padding-left: 5%;
+}

@@ -6,12 +6,13 @@
 	.eventTitle {
 		color: #453257;
 		font-size: 18px;
-		font-family: 'SourceSansPro-Semibold';
+		font-family: 'Source Sans Pro';
+		font-weight: 600;
 		margin-bottom: 8px;
 	}
 
 	.eventTime {
-		font-family: 'SourceSansPro-Regular';
+		font-family: 'Source Sans Pro';
 		font-size: 12px;
 		color: #8560A9;
 		margin-bottom: 12px;
@@ -19,7 +20,7 @@
 	}
 
 	.eventDescription {
-		font-family: 'SourceSansPro-Regular';
+		font-family: 'Source Sans Pro';
 		font-size: 14px;
 		color: #67616D;
 		overflow: hidden;
@@ -35,18 +36,19 @@
 		height: 12px;
 		display: inline;
 		margin-right: 6px;
+		vertical-align: center;
 	}
 
 	.eventEmpty {
 		font-size: 12px;
 		display: inline-block;
 		color: #AC8EC9;
-		font-family: 'SourceSansPro-Regular';
+		font-family: 'Source Sans Pro';
 	}
 
 	.eventFilled {
 		color: #453257;
-		font-family: 'SourceSansPro-Regular';
+		font-family: 'Source Sans Pro';
 		font-size: 12px;
 		display: inline-block;
 	}
@@ -54,13 +56,5 @@
 	.seperator {
 		display: inline-block;
 		width: 30px;
-	}
-
-	hr {
-		width: 300px;
-		color: #E8E8E8;
-		border: none;
-		height: 1px;
-		background-color: #E8E8E8;
 	}
 }

@@ -5,7 +5,6 @@ const eventReducer = (state = {}, action) => {
   switch (action.type) {
     case GET_EVENTS:
       return _.merge({}, state, action.events);
-
     case GET_EVENT_DETAIL:
       const eventId = action.event.id;
       const event = {};

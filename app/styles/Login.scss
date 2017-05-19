@@ -17,13 +17,15 @@
 		.loginSlogan {
 			padding-top: 70px;
 			color: #D5EF7F;
-			font-family: "SourceSansPro-Semibold";
+			font-family: "Source Sans Pro";
+			font-weight: 600;
 			font-size: 16px;
 			margin-bottom: 16px;
 		}
 
 		.brandName {
-			font-family: "SourceSansPro-Bold";
+			font-family: "Source Sans Pro";
+			font-weight: 700;
 			color: #D5EF7F;
 			font-size: 24px;
 			margin-bottom: 37px;
@@ -71,5 +73,6 @@
 		font-size: 16px;
 		text-align: center;
 		border: none;
+		cursor:pointer;
 	}
 }
