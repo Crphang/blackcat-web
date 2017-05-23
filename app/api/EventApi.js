@@ -1,7 +1,7 @@
 import 'whatwg-fetch';
 
 import CONSTANTS from '../Constants';
-import { getEventsAction, getEventDetailAction } from '../actions/EventActions';
+import { getEventsAction, getEventDetailAction, eventRegisteredAction, eventCommentedAction, eventLikedAction } from '../actions/EventActions';
 import { likeEventAction, registerEventAction } from '../actions/UserActions';
 
 export const getEvents = () => {
@@ -44,7 +44,8 @@ export const getEvent = (eventId) => {
 
 export const likeEvent = (eventId) => {
   return (dispatch, getState) => {
-    const accessToken = getState().user.access_token;
+    const user = getState().user;
+    const accessToken = user.access_token;
     fetch(CONSTANTS.HOST + '/event/like', {
       method: 'POST',
       headers: {
@@ -59,6 +60,12 @@ export const likeEvent = (eventId) => {
       response.json()
       .then((body) => {
         if (body.error === undefined) {
+          const newParticipant = {};
+          newParticipant[body.id] = {
+            likes: [],
+          };
+          newParticipant[body.id].likes.push(user);
+          dispatch((eventLikedAction(newParticipant)));
           dispatch((likeEventAction(body)));
         }
 
@@ -70,7 +77,8 @@ export const likeEvent = (eventId) => {
 
 export const registerEvent = (eventId) => {
   return (dispatch, getState) => {
-    const accessToken = getState().user.access_token;
+    const user = getState().user;
+    const accessToken = user.access_token;
     fetch(CONSTANTS.HOST + '/event/register', {
       method: 'POST',
       headers: {
@@ -85,7 +93,12 @@ export const registerEvent = (eventId) => {
       response.json()
       .then((body) => {
         if (body.error === undefined) {
-          console.log(body);
+          const newParticipant = {};
+          newParticipant[body.id] = {
+            participants: [],
+          };
+          newParticipant[body.id].participants.push(user);
+          dispatch((eventRegisteredAction(newParticipant)));
           dispatch((registerEventAction(body)));
         }
 
@@ -112,7 +125,17 @@ export const commentEvent = (eventId, comment) => {
     .then((response) => {
       response.json()
       .then((body) => {
-        console.log(body);
+        if (body.error === undefined) {
+          const newComment = {};
+          newComment[body.event_id] = {
+            comments: [],
+          };
+          newComment[body.event_id].comments.push(body);
+          console.log(newComment);
+          dispatch(eventCommentedAction(newComment));
+        }
+
+        console.log(body.error);
       });
     });
   };

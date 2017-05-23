@@ -22,6 +22,7 @@ class EventDetail extends React.Component {
 
   componentDidMount() {
     this.loadMap(this.props.event.latitude, this.props.event.longitude);
+
   }
 
   loadMap(latitude, longitude) {
@@ -50,7 +51,6 @@ class EventDetail extends React.Component {
 
   render() {
     const event = this.props.event;
-    console.log(event);
     const startDate = new Date(event.start_date * 1000);
 
     const startDateStr = startDate.getDate() + ' ' +
@@ -65,6 +65,9 @@ class EventDetail extends React.Component {
 
     return (
       <div className="eventDetailWrapper">
+        <div className="imageCarousel">
+          {event.images && event.images.map(image => <img className="image" src={Constants.IMAGES + '/' + image} />)}
+        </div>
         <div className="eventDescription">{event.description}</div>
         <hr />
         <div className="eventPeriod">
