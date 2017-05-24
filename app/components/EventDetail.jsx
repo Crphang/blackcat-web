@@ -7,6 +7,7 @@ import Constants from '../Constants';
 
 import FaceRow from './FaceRow';
 import CommentsTab from './CommentsTab';
+import Carousel from './Carousel';
 
 class EventDetail extends React.Component {
 
@@ -22,7 +23,6 @@ class EventDetail extends React.Component {
 
   componentDidMount() {
     this.loadMap(this.props.event.latitude, this.props.event.longitude);
-
   }
 
   loadMap(latitude, longitude) {
@@ -33,7 +33,7 @@ class EventDetail extends React.Component {
     });
     const marker = new google.maps.Marker({
       position: uluru,
-      map: map,
+      map,
     });
 
     const geocoder = new google.maps.Geocoder;
@@ -64,57 +64,57 @@ class EventDetail extends React.Component {
     const endTimeStr = endDate.getHours() + ':' + endDate.getMinutes();
 
     return (
-      <div className="eventDetailWrapper">
-        <div className="imageCarousel">
-          {event.images && event.images.map(image => <img className="image" src={Constants.IMAGES + '/' + image} />)}
-        </div>
-        <div className="eventDescription">{event.description}</div>
-        <hr />
-        <div className="eventPeriod">
-          <div className="descriptor">
-            <div className="purpleLine" />
-            <div className="descriptorTitle">When</div>
-          </div>
-          <div className="time">
-            <div className="eventStart">
-              <div className="timeTop">
-                <img className="timeLogo" src={Constants.STATIC + '/assets/date-from.svg'} />
-                <div className="timeDescription">{startDateStr}</div>
+      <div>
+        <div className="eventDetailWrapper">
+          <Carousel images={event.images} />
+          <div className="eventDescription">{event.description}</div>
+          <hr />
+          <div className="eventPeriod">
+            <div className="descriptor">
+              <div className="purpleLine" />
+              <div className="descriptorTitle">When</div>
+            </div>
+            <div className="time">
+              <div className="eventStart">
+                <div className="timeTop">
+                  <img className="timeLogo" src={Constants.STATIC + '/assets/date-from.svg'} />
+                  <div className="timeDescription">{startDateStr}</div>
+                </div>
+                <div className="timeBottom">
+                  {startTimeStr}
+                </div>
               </div>
-              <div className="timeBottom">
-                {startTimeStr}
+              <div className="verticalLineLong" />
+              <div className="eventEnd">
+                <div className="timeTop">
+                  <img className="timeLogo" src={Constants.STATIC + '/assets/date-to.svg'} />
+                  <div className="timeDescription">{endDateStr}</div>
+                </div>
+                <div className="timeBottom">
+                  {endTimeStr}
+                </div>
               </div>
             </div>
-            <div className="verticalLineLong" />
-            <div className="eventEnd">
-              <div className="timeTop">
-                <img className="timeLogo" src={Constants.STATIC + '/assets/date-to.svg'} />
-                <div className="timeDescription">{endDateStr}</div>
-              </div>
-              <div className="timeBottom">
-                {endTimeStr}
-              </div>
+          </div>
+          <hr />
+          <div className="eventLocation">
+            <div className="descriptor">
+              <div className="purpleLine" />
+              <div className="descriptorTitle">Where</div>
             </div>
+            <div className="location">
+              {this.state.place.formatted_address}
+            </div>
+            <div className="googleMaps" id="map" />
           </div>
-        </div>
-        <hr />
-        <div className="eventLocation">
-          <div className="descriptor">
-            <div className="purpleLine" />
-            <div className="descriptorTitle">Where</div>
+          <hr />
+          <FaceRow users={event.participants} type="Going" />
+          <hr />
+          <FaceRow users={event.likes} type="Likes" />
+          <hr />
+          <div className="CommentsTabWrapper">
+            <CommentsTab comments={event.comments} />
           </div>
-          <div className="location">
-            {this.state.place.formatted_address}
-          </div>
-          <div className="googleMaps" id="map" />
-        </div>
-        <hr />
-        <FaceRow users={event.participants} type="Going" />
-        <hr />
-        <FaceRow users={event.likes} type="Likes" />
-        <hr />
-        <div className="CommentsTabWrapper">
-          <CommentsTab comments={event.comments} />
         </div>
         <div className="eventActions">
           <div className="leftActions">
@@ -127,7 +127,6 @@ class EventDetail extends React.Component {
           </div>
         </div>
       </div>
-
     );
   }
 }

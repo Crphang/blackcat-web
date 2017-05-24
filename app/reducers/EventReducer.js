@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import { GET_EVENTS, GET_EVENT_DETAIL, EVENT_LIKED, EVENT_REGISTERED, EVENT_COMMENTED } from '../actions/EventActions';
+import { GET_EVENTS, ADD_EVENTS, GET_EVENT_DETAIL, EVENT_LIKED, EVENT_REGISTERED, EVENT_COMMENTED } from '../actions/EventActions';
 
 function customizer(objValue, srcValue) {
   if (_.isArray(objValue)) {
@@ -10,6 +10,8 @@ function customizer(objValue, srcValue) {
 const eventReducer = (state = {}, action) => {
   switch (action.type) {
     case GET_EVENTS:
+      return _.merge({}, {}, action.events);
+    case ADD_EVENTS:
       return _.merge({}, state, action.events);
     case GET_EVENT_DETAIL:
       const eventId = action.event.id;

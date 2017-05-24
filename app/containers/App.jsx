@@ -3,23 +3,86 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { getEvents } from '../api/EventApi';
+import getCategories from '../api/CategoryApi';
 import EventRow from '../components/EventRow';
 
 import '../styles/App.scss';
 import Navbar from '../components/Navbar';
+import SearchBar from '../components/SearchBar';
 
 class App extends React.Component {
 
+  static handleShowSearch() {
+    document.getElementById('searchbar').className = 'active';
+  }
+
+  constructor() {
+    super();
+
+    this.state = {
+      selectedDate: 'ANYTIME',
+      selectedCategory: 'All',
+    };
+
+    this.handleSearch = this.handleSearch.bind(this);
+    this.handleSelectDate = this.handleSelectDate.bind(this);
+    this.handleSelectCategory = this.handleSelectCategory.bind(this);
+  }
+
   componentDidMount() {
     this.props.getEvents();
+    this.props.getCategories();
+    const self = this;
+    document.addEventListener('scroll', () => {
+      const percentage = (document.body.scrollTop + window.innerHeight) / document.body.scrollHeight;
+      const values = Object.values(self.props.events);
+      const lastEvent = values[values.length - 3];
+      const lastPageCount = parseInt(lastEvent.page_count, 10);
+      const totalPages = self.props.events.total_pages;
+      if (percentage >= 0.98 && lastPageCount < totalPages) {
+        const newPageCount = lastPageCount + 1;
+        self.props.getEvents(newPageCount);
+      }
+    });
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('scroll', true);
+    window.removeEventListener('scroll', true);
+  }
+
+  handleSearch() {
+    document.getElementById('searchbar').className = '';
+  }
+
+  handleSelectDate(selectedDate) {
+    this.setState({
+      selectedDate,
+    });
+  }
+
+  handleSelectCategory(selectedCategory) {
+    this.setState({
+      selectedCategory,
+    });
   }
 
   render() {
     return (
       <div className="wrapper">
-        <Navbar {...this.props} />
+        <Navbar {...this.props} handleShowSearch={App.handleShowSearch} />
+        <SearchBar
+          selectedCategory={this.state.selectedCategory}
+          selectedDate={this.state.selectedDate}
+          handleSearch={this.handleSearch}
+          categories={this.props.categories}
+          handleSelectDate={this.handleSelectDate}
+          handleSelectCategory={this.handleSelectCategory}
+        />
         { this.props.events &&
-         Object.values(this.props.events).map(event => <EventRow key={event.id} event={event} user={this.props.user}/>) }
+         Object.values(this.props.events).map(event =>
+          event !== null && typeof event === 'object' &&
+          <EventRow key={event.id} event={event} user={this.props.user} />) }
       </div>
     );
   }
@@ -29,13 +92,17 @@ const mapStateToProps = (state) => {
   return {
     user: state.user,
     events: state.events,
+    categories: state.categories,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getEvents: () => {
-      dispatch(getEvents());
+    getEvents: (page = 1) => {
+      dispatch(getEvents(page));
+    },
+    getCategories: () => {
+      dispatch(getCategories());
     },
   };
 };
@@ -44,6 +111,7 @@ App.propTypes = {
   getEvents: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
   events: PropTypes.object.isRequired,
+  categories: PropTypes.array.isRequired,
 };
 
 

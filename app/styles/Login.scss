@@ -1,21 +1,23 @@
 .loginWrapper {
-	width: 320px;
+	width: 100%;
 
 	.backgroundLogin {
 		position: absolute;
 		z-index: -2;
 		opacity: 0.95;
-		width: 320px;
-		height: 480px;
+		width: 100%;
+		height: 100%;
 	}
 
 	.backgroundColor {
 		text-align: center;
 		background-color: rgba(133, 96, 169, 0.7);
-		height: 480px;
+		height: 100%;
+		width: 100%;
+		position: absolute;
 
 		.loginSlogan {
-			padding-top: 70px;
+			padding-top: 5%;
 			color: #D5EF7F;
 			font-family: "Source Sans Pro";
 			font-weight: 600;
@@ -28,7 +30,7 @@
 			font-weight: 700;
 			color: #D5EF7F;
 			font-size: 24px;
-			margin-bottom: 37px;
+			margin-bottom: 5%;
 		}
 
 		.loginLogo {
@@ -37,10 +39,11 @@
 			display: block;
 			margin-left: auto;
 			margin-right: auto;
-			margin-bottom: 118px;
+			margin-bottom: 25%;
 		}
 
 		.loginField {
+			display: block;
 			width: 240px;
 			height: 40px;
 			color: #453257;
@@ -51,6 +54,8 @@
 			border-color: #D3C1E5;
 			margin-bottom: 8px;
 			margin-top: 8px;
+			margin-left: auto;
+			margin-right: auto;
 			background-color: rgba(255, 255, 255, 0.15);
 		}
 
@@ -66,8 +71,10 @@
 	}
 
 	.signIn {
-		width: 320px;
+		width: 100%;
 		height: 64px;
+		position: fixed;
+		bottom: 0px;
 		background-color: #D5EF7F;
 		color: #453257;
 		font-size: 16px;

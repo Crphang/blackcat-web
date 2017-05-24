@@ -12,10 +12,10 @@
 }
 
 hr {
-	width: 300px;
+	width: 100%;
 	color: #E8E8E8;
 	border: none;
-	height: 1px;
+	height: 0.8px;
 	background-color: #E8E8E8;
 }
 
@@ -81,17 +81,18 @@ hr {
 }
 
 .bar {
-	width: 320px;
+	width: 100%;
 	background-color: #8560A9;
 	height: 40px;
 
 	.searchLogo {
-		padding-left: 3%;
+		padding-left: 2%;
 		display: inline-block;
-		width: 20px;
-		height: 20px;
+		width: 24px;
+		height: 24px;
 		margin-top: 3px;
-		margin-right: 30%;
+		margin-right: 37%;
+		cursor: pointer;
 	}
 
 	.homeLogo {
@@ -109,6 +110,7 @@ hr {
 		height: 24px;
 		margin-top: 8px;
 		margin-right: 37%;
+		cursor: pointer;
 	}
 
 	.meLogo {
@@ -117,5 +119,6 @@ hr {
 		height: 24px;
 		margin-top: 5px;
 		border-radius: 12px;
+		cursor: pointer;
 	}
 }

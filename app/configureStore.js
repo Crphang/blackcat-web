@@ -7,10 +7,12 @@ import { browserHistory } from 'react-router';
 
 import userReducer from './reducers/UserReducer';
 import eventReducer from './reducers/EventReducer';
+import categoryReducer from './reducers/CategoryReducer';
 
 const reducers = combineReducers({
   user: userReducer,
   events: eventReducer,
+  categories: categoryReducer,
   routing: routerReducer,
 });
 

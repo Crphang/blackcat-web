@@ -1,23 +1,33 @@
 import 'whatwg-fetch';
 
 import CONSTANTS from '../Constants';
-import { getEventsAction, getEventDetailAction, eventRegisteredAction, eventCommentedAction, eventLikedAction } from '../actions/EventActions';
+import { getEventsAction, addEventsAction, getEventDetailAction, eventRegisteredAction, eventCommentedAction, eventLikedAction } from '../actions/EventActions';
 import { likeEventAction, registerEventAction } from '../actions/UserActions';
 
-export const getEvents = () => {
+const END_OF_TIME = 9999999999;
+
+export const getEvents = (page = 1, startDate = 0, endDate = END_OF_TIME) => {
   return (dispatch, getState) => {
     const accessToken = getState().user.access_token;
-    fetch(CONSTANTS.HOST + '/event/get_events', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Auth-Token': accessToken,
-      },
-    })
+    fetch(CONSTANTS.HOST +
+      `/event/get_events?page_count=${page}&start_date=${startDate}&end_date=${endDate}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Auth-Token': accessToken,
+        },
+      })
     .then((response) => {
       response.json()
       .then((body) => {
-        dispatch(getEventsAction(body));
+        const values = Object.values(body);
+        const lastEvent = values[values.length - 3];
+        const lastPageCount = parseInt(lastEvent.page_count, 10);
+        if (lastPageCount === 1) {
+          dispatch(getEventsAction(body));
+        } else {
+          dispatch(addEventsAction((body)));
+        }
       });
     });
   };

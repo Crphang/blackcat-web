@@ -1,4 +1,5 @@
 export const GET_EVENTS = 'GET_EVENTS';
+export const ADD_EVENTS = 'ADD_EVENTS';
 export const GET_EVENT_DETAIL = 'GET_EVENT_DETAIL';
 export const EVENT_REGISTERED = 'EVENT_REGISTERED';
 export const EVENT_LIKED = 'EVENT_LIKED';
@@ -7,6 +8,13 @@ export const EVENT_COMMENTED = 'EVENT_COMMENTED';
 export const getEventsAction = (events) => {
   return {
     type: GET_EVENTS,
+    events,
+  };
+};
+
+export const addEventsAction = (events) => {
+  return {
+    type: ADD_EVENTS,
     events,
   };
 };

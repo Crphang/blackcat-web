@@ -1,6 +1,11 @@
 .wrapper {
-	width: 320px;
+	width: 100%;
 	background-color: #FAF9FC;
+	position: relative;
+}
+
+body {
+	margin: 0px;
 }
 
 .inlineWrapper {
@@ -13,7 +18,7 @@ a {
 }
 
 .imageCarousel {
-	height: 150px;
+	height: 250px;
 	width: 90%;
 	padding-left: 8px;
 

@@ -1,0 +1,85 @@
+#searchbar {
+	visibility: hidden;
+	top: 0px;
+	width:0%;
+	z-index: 9;
+	position: absolute;
+	min-height: 720px	;
+	background-color: #453257;
+
+	.searchTitle {
+		padding-top: 10px;
+		color: #AC8EC9;
+		font-family: 'Source Sans Pro';
+		font-weight: 600;
+		text-decoration: underline;
+		text-align: center;
+		margin-bottom: 20px;
+		font-size: 12px;
+	}
+
+	.searchItems {
+		padding-left: 5%;
+		padding-right: 5%;
+		color: #FFFFFF;
+		font-size: 14px;
+		font-family: 'Source Sans Pro';
+		font-weight: 600;
+		margin-bottom: 30px;
+
+		.searchItem {
+			display: inline-block;
+			margin-right: 15px;
+			cursor: pointer;
+			margin-bottom: 3px;
+		}
+
+		.selectedDate {
+			background-color: #E5F7A9;
+			border-radius: 12px;
+			color: #453257;
+			padding: 3px;
+		}
+
+		.categoryItem {
+			display: inline-block;
+			margin-right: 15px;
+			cursor: pointer;
+			border: 1px solid #D3C1E5;
+			border-radius: 12px;
+			padding: 3px;
+			margin-bottom: 4px;
+			font-family: 'Source Sans Pro';
+			font-weight: 400;
+		}
+
+		.selectedCategory {
+			background-color: #E5F7A9;
+			border-radius: 12px;
+			color: #453257;
+			padding: 3px;			
+		}
+	}
+
+	.search {
+		background-color: #D5EF7F;
+		width: 75%;
+		height: 32px;
+		padding-top: 16px;
+		padding-bottom: 16px;
+		cursor: pointer;
+		text-align: center;
+		color: #453257;
+		font-family: 'Source Sans Pro';
+		bottom: 0px;
+		position: fixed;
+	}
+
+}
+
+#searchbar.active {
+	visibility: visible;
+	width: 75%;
+	min-height: 100%;
+	transition: width 0.2s ease-in;
+}
