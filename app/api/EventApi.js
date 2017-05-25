@@ -5,6 +5,7 @@ import { getEventsAction, addEventsAction, getEventDetailAction, eventRegistered
 import { likeEventAction, registerEventAction } from '../actions/UserActions';
 
 import moment from 'moment';
+import Cookies from 'js-cookie';
 
 const END_OF_TIME = 9999999999999;
 
@@ -65,7 +66,9 @@ export const likeEvent = (eventId) => {
     const accessToken = user.access_token;
     fetch(CONSTANTS.HOST + '/event/like', {
       method: 'POST',
+      credentials: 'include',
       headers: {
+        'X-CSRFToken': Cookies.get('csrfToken'),
         'Content-Type': 'application/json',
         'X-Auth-Token': accessToken,
       },
@@ -98,9 +101,11 @@ export const registerEvent = (eventId) => {
     const accessToken = user.access_token;
     fetch(CONSTANTS.HOST + '/event/register', {
       method: 'POST',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
         'X-Auth-Token': accessToken,
+        'X-CSRFToken': Cookies.get('csrfToken'),
       },
       body: JSON.stringify({
         event_id: eventId,
@@ -130,9 +135,11 @@ export const commentEvent = (eventId, comment) => {
     const accessToken = getState().user.access_token;
     fetch(CONSTANTS.HOST + '/event/comment', {
       method: 'POST',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
         'X-Auth-Token': accessToken,
+        'X-CSRFToken': Cookies.get('csrfToken'),
       },
       body: JSON.stringify({
         event_id: eventId,
