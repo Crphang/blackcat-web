@@ -60,12 +60,12 @@ const SearchBar = ({ selectedCategory, selectedDate, handleSearch, handleSelectD
         Category
       </div>
       <div className="searchItems">
-        {selectedCategory !== 'All' && <div className="categoryItem">All</div>}
-        {selectedCategory === 'All' && <div className="categoryItem selectedCategory">All</div>}
+        {selectedCategory !== 'All' && <div onClick={() => handleSelectCategory('All')} className="categoryItem">All</div>}
+        {selectedCategory === 'All' && <div onClick={() => handleSelectCategory('All')} className="categoryItem selectedCategory">All</div>}
         {categories &&
           categories.map((category) => {
             if (selectedCategory === category.id) {
-              return <div onClick={() => handleSelectCategory(category.id)}className="categoryItem selectedCategory">{category.name}</div>;
+              return <div onClick={() => handleSelectCategory(category.id)} className="categoryItem selectedCategory">{category.name}</div>;
             }
             return <div onClick={() => handleSelectCategory(category.id)} className="categoryItem">{category.name}</div>;
           })}

@@ -8,12 +8,12 @@ import Constants from '../Constants';
 export default function EventRow({ event, user }) {
   const startDate = new Date(event.start_date * 1000);
   const startDateStr = startDate.getDate() + ' ' +
-                        getShortMonth(startDate.getMonth) + ' ' +
+                        getShortMonth(startDate.getMonth()) + ' ' +
                         startDate.getFullYear() + ' ' +
                         startDate.getHours() + ':' + startDate.getMinutes();
   const endDate = new Date(event.end_date * 1000);
   const endDateStr = endDate.getDate() + ' ' +
-                        getShortMonth(endDate.getMonth) + ' ' +
+                        getShortMonth(endDate.getMonth()) + ' ' +
                         endDate.getFullYear() + ' ' +
                         endDate.getHours() + ':' + endDate.getMinutes();
 
@@ -23,7 +23,10 @@ export default function EventRow({ event, user }) {
   return (
     <div className="eventContainer">
       <Link to={`/event/${event.id}`} >
-        <div className="eventTitle">{event.title}</div>
+        <div className="eventTitleCategory">
+          <div className="eventTitle">{event.title}</div>
+          {event.category && <div className="eventCategory">{event.category.name}</div>}
+        </div>
         <img src={Constants.STATIC + '/assets/time.svg'} className="eventClock" />
         <div className="eventTime">{startDateStr} - {endDateStr}</div>
         <div className="eventDescription">{event.description}</div>

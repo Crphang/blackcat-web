@@ -4,13 +4,15 @@ import CONSTANTS from '../Constants';
 import { getEventsAction, addEventsAction, getEventDetailAction, eventRegisteredAction, eventCommentedAction, eventLikedAction } from '../actions/EventActions';
 import { likeEventAction, registerEventAction } from '../actions/UserActions';
 
-const END_OF_TIME = 9999999999;
+import moment from 'moment';
 
-export const getEvents = (page = 1, startDate = 0, endDate = END_OF_TIME) => {
+const END_OF_TIME = 9999999999999;
+
+export const getEvents = (page = 1, startDate = 0, endDate = END_OF_TIME, category = 'All') => {
   return (dispatch, getState) => {
     const accessToken = getState().user.access_token;
     fetch(CONSTANTS.HOST +
-      `/event/get_events?page_count=${page}&start_date=${startDate}&end_date=${endDate}`, {
+      `/event/get_events?page_count=${page}&start_date=${startDate}&end_date=${endDate}&category=${category}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -20,13 +22,18 @@ export const getEvents = (page = 1, startDate = 0, endDate = END_OF_TIME) => {
     .then((response) => {
       response.json()
       .then((body) => {
+        console.log(body);
         const values = Object.values(body);
-        const lastEvent = values[values.length - 3];
-        const lastPageCount = parseInt(lastEvent.page_count, 10);
-        if (lastPageCount === 1) {
-          dispatch(getEventsAction(body));
+        if (values.length > 1) {
+          const lastEvent = values[values.length - 2];
+          const lastPageCount = parseInt(lastEvent.page_count, 10);
+          if (lastPageCount === 1) {
+            dispatch(getEventsAction(body));
+          } else {
+            dispatch(addEventsAction((body)));
+          }
         } else {
-          dispatch(addEventsAction((body)));
+          dispatch(getEventsAction(body));
         }
       });
     });
@@ -179,5 +186,34 @@ export const getShortMonth = (month) => {
       return 'DEC';
     default:
       return 'JAN';
+  }
+};
+
+export const getStartDateEndDate = (durationString) => {
+  const startOfToday = moment().hour(0).minutes(0).seconds(0).milliseconds(0);
+  const startOfTomorrow = moment().date(moment().date() + 1).hour(0).minutes(0).seconds(0).milliseconds(0);
+  const twoDaysLater = moment().date(moment().date() + 2).hour(0).minutes(0).seconds(0).milliseconds(0);
+  const startOfThisWeek = moment().day(0).hour(0).minutes(0).seconds(0).milliseconds(0);
+  const endOfThisWeek = moment().day(6).hour(0).minutes(0).seconds(0).milliseconds(0);
+  const startOfMonth = moment().date(1).hour(0).minutes(0).seconds(0).milliseconds(0);
+  const endOfMonth = moment().month(moment().month() + 1).date(1).hour(0).minutes(0).seconds(0).milliseconds(0);
+
+  switch (durationString) {
+    case 'ANYTIME':
+      return [0, END_OF_TIME];
+    case 'TODAY':
+      console.log(startOfToday.toString());
+      console.log(startOfTomorrow.toString());
+      return [startOfToday.valueOf(), startOfTomorrow.valueOf()];
+    case 'TOMORROW':
+      return [startOfTomorrow.valueOf(), twoDaysLater.valueOf()];
+    case 'THIS WEEK':
+      return [startOfThisWeek.valueOf(), endOfThisWeek.valueOf()];
+    case 'THIS MONTH':
+      return [startOfMonth.valueOf(), endOfMonth.valueOf()];
+    case 'LATER':
+      return [endOfMonth.valueOf(), END_OF_TIME];
+    default:
+      return [0, END_OF_TIME];
   }
 };

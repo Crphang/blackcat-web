@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { getEvents } from '../api/EventApi';
+import { getEvents, getStartDateEndDate } from '../api/EventApi';
 import getCategories from '../api/CategoryApi';
 import EventRow from '../components/EventRow';
 
@@ -41,7 +41,13 @@ class App extends React.Component {
       const totalPages = self.props.events.total_pages;
       if (percentage >= 0.98 && lastPageCount < totalPages) {
         const newPageCount = lastPageCount + 1;
-        self.props.getEvents(newPageCount);
+
+        const startDateEndDate = getStartDateEndDate(this.state.selectedDate);
+        const startDate = startDateEndDate[0];
+        const endDate = startDateEndDate[1];
+        console.log(startDate);
+        console.log(endDate);
+        self.props.getEvents(newPageCount, startDate, endDate, this.state.selectedCategory);
       }
     });
   }
@@ -52,7 +58,12 @@ class App extends React.Component {
   }
 
   handleSearch() {
+    const startDateEndDate = getStartDateEndDate(this.state.selectedDate);
+    const startDate = startDateEndDate[0];
+    const endDate = startDateEndDate[1];
+
     document.getElementById('searchbar').className = '';
+    this.props.getEvents(1, startDate, endDate, this.state.selectedCategory);
   }
 
   handleSelectDate(selectedDate) {
@@ -98,8 +109,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getEvents: (page = 1) => {
-      dispatch(getEvents(page));
+    getEvents: (page = 1, startDate = 0, endDate = 9999999999999, category = 'All') => {
+      dispatch(getEvents(page, startDate, endDate, category));
     },
     getCategories: () => {
       dispatch(getCategories());

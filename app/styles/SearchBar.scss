@@ -4,7 +4,8 @@
 	width:0%;
 	z-index: 9;
 	position: absolute;
-	min-height: 720px	;
+	height: 100%;
+	min-height: 480px;
 	background-color: #453257;
 
 	.searchTitle {
@@ -80,6 +81,5 @@
 #searchbar.active {
 	visibility: visible;
 	width: 75%;
-	min-height: 100%;
 	transition: width 0.2s ease-in;
 }
