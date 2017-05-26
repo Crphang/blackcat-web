@@ -1,11 +1,10 @@
 import 'whatwg-fetch';
+import moment from 'moment';
+import Cookies from 'js-cookie';
 
 import CONSTANTS from '../Constants';
 import { getEventsAction, addEventsAction, getEventDetailAction, eventRegisteredAction, eventCommentedAction, eventLikedAction } from '../actions/EventActions';
 import { likeEventAction, registerEventAction } from '../actions/UserActions';
-
-import moment from 'moment';
-import Cookies from 'js-cookie';
 
 const END_OF_TIME = 9999999999999;
 
@@ -23,7 +22,6 @@ export const getEvents = (page = 1, startDate = 0, endDate = END_OF_TIME, catego
     .then((response) => {
       response.json()
       .then((body) => {
-        console.log(body);
         const values = Object.values(body);
         if (values.length > 1) {
           const lastEvent = values[values.length - 2];
@@ -155,7 +153,6 @@ export const commentEvent = (eventId, comment) => {
             comments: [],
           };
           newComment[body.event_id].comments.push(body);
-          console.log(newComment);
           dispatch(eventCommentedAction(newComment));
         }
 
@@ -209,8 +206,6 @@ export const getStartDateEndDate = (durationString) => {
     case 'ANYTIME':
       return [0, END_OF_TIME];
     case 'TODAY':
-      console.log(startOfToday.toString());
-      console.log(startOfTomorrow.toString());
       return [startOfToday.valueOf(), startOfTomorrow.valueOf()];
     case 'TOMORROW':
       return [startOfTomorrow.valueOf(), twoDaysLater.valueOf()];

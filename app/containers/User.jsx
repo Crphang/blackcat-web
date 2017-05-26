@@ -28,14 +28,12 @@ class User extends React.Component {
   renderSelectedEvents() {
     if (this.state.selected === 'Likes') {
       return Object.values(this.props.user.liked_events).map(event =>
-        <EventRow
-          key={event.id} user={this.props.user} event={event} />);
+        <EventRow key={event.id} user={this.props.user} event={event} />);
     }
 
     if (this.state.selected === 'Going') {
       return Object.values(this.props.user.participating_events).map(event =>
-        <EventRow
-          key={event.id} user={this.props.user} event={event} />);     
+        <EventRow key={event.id} user={this.props.user} event={event} />);     
     }
   }
 

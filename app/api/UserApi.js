@@ -1,10 +1,10 @@
 import 'whatwg-fetch';
 import { push } from 'react-router-redux';
+import Cookies from 'js-cookie';
 
 import CONSTANTS from '../Constants';
 import { userLogin } from '../actions/UserActions';
 
-import Cookies from 'js-cookie'; 
 
 export const login = (username, password) => {
   return (dispatch) => {

@@ -6,6 +6,7 @@ import { getShortMonth } from '../api/EventApi';
 import Constants from '../Constants';
 
 export default function EventRow({ event, user }) {
+  console.log(event);
   const startDate = new Date(event.start_date * 1000);
   const startDateStr = startDate.getDate() + ' ' +
                         getShortMonth(startDate.getMonth()) + ' ' +
